@@ -15,9 +15,14 @@ import os
 class ResNetModel:
 
     def get_model(self):
+        '''
+        resnet18默认输出1000个分类
+        本函数对其进行代码修改，取出原模型最后一层全连接层的特征，对全连接层进行输出修改为2个分类
+        :return:
+        '''
         model = models.resnet18(pretrained=True)
-        num_ftrs = model.fc.in_features
-        model.fc = nn.Linear(num_ftrs, 2)
+        num_ftrs = model.fc.in_features # 取出原模型最后一层全连接层的特征数
+        model.fc = nn.Linear(num_ftrs, 2) # 修改最后输出为2分类
         return model
 
     def fit(self):
