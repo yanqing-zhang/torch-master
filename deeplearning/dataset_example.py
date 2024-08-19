@@ -7,18 +7,20 @@
 '''
 import torch
 from torch.utils.data import Dataset
-"""
-目标：通过原始图像image和对应的标注label使用代码包装成pytorch的dataset数据集
-数据来源:https://www.kaggle.com/datasets/sumn2u/riped-and-unriped-tomato-dataset
-数据介绍:数据包是关于生西红柿(番茄)和熟西红柿的图片和标注数据
-"""
-from torch.utils.data import Dataset
-from torchvision import transforms
 from PIL import Image
-import os
-from torchvision import datasets
 
 class MyDataset(Dataset):
+    """
+    目标：通过原始图像image和对应的标注label使用代码包装成pytorch的dataset数据集
+    数据来源:https://storage.googleapis.com/download.tensorflow.org/example_images/flower_photos.tgz
+    数据介绍:数据包是关于花朵分类的数据
+    ./datas/flowers:
+    ├─daisy
+    ├─dandelion
+    ├─roses
+    ├─sunflowers
+    └─tulips
+    """
     def __init__(self, images_path: list, labels_path: list, transform=None):
         super(MyDataset, self).__init__()
         self.images_path = images_path

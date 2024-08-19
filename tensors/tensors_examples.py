@@ -100,6 +100,12 @@ class TensorsExamples:
         print(f"f:{f}")
         f.backward()
         print(f"grad:{x.grad}")
+
+    def tensors_numel(self):
+        x = torch.rand(100, 200)
+        # x.numel()计算了张量x中元素的总数,numel是"number of elements"的缩写，这个方法返回张量中元素的总数
+        a = x.numel()
+        print(f"a:{a}")
 if __name__ == '__main__':
     t = TensorsExamples()
     if False:
@@ -109,5 +115,6 @@ if __name__ == '__main__':
         t.create_tensors()
         t.create_tensors_by_rand()
         t.tensors_operate()
-    else:
         t.tensors_autograd()
+    else:
+        t.tensors_numel()
