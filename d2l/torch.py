@@ -46,7 +46,13 @@ from scipy.spatial import distance_matrix
 from torch import nn
 from torch.nn import functional as F
 from torchvision import transforms
-
+"""
+pip install pandas -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip install requests -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip install IPython -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip install gym -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip install scipy -i https://pypi.tuna.tsinghua.edu.cn/simple
+"""
 
 def use_svg_display():
     """Use the svg format to display a plot in Jupyter.

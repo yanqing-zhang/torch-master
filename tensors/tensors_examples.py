@@ -106,6 +106,23 @@ class TensorsExamples:
         # x.numel()计算了张量x中元素的总数,numel是"number of elements"的缩写，这个方法返回张量中元素的总数
         a = x.numel()
         print(f"a:{a}")
+
+    def tensor_arange_cat(self):
+        """
+        torch.arange(12, dtype=torch.float32)生成[0-11]共12个整数成一个列表
+        torch.cat((X, Y), dim=0) 在列方向上进行拼接
+        torch.cat((X, Y), dim=1) 在行方向上进行拼接
+        :return:
+        """
+        X = torch.arange(12, dtype=torch.float32).reshape((3, 4))
+        print(f"X:{X}")
+        print("--------------------------------------")
+        Y = torch.tensor([[2.0, 1, 4, 3], [1, 2, 3, 4], [4, 3, 2, 1]])
+        print(f"Y:{Y}")
+        print("--------------------------------------")
+        Z = torch.cat((X, Y), dim=0), torch.cat((X, Y), dim=1)
+        print(f"Z:{Z}")
+
 if __name__ == '__main__':
     t = TensorsExamples()
     if False:
@@ -116,5 +133,6 @@ if __name__ == '__main__':
         t.create_tensors_by_rand()
         t.tensors_operate()
         t.tensors_autograd()
-    else:
         t.tensors_numel()
+    else:
+        t.tensor_arange_cat()

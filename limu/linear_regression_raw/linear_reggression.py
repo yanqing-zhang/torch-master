@@ -7,8 +7,15 @@ class LinearReggressionRaw:
     """
     def synthetic_data(self, w, b, num_examples):
         """
+        异常:RuntimeError: Trying to backward through the graph a second time
+         (or directly access saved tensors after they have already been freed).
+         Saved intermediate values of the graph are freed when you call .
+         backward() or autograd.grad(). Specify retain_graph=True
+         if you need to backward through the graph a second time or
+         if you need to access saved tensors after calling backward.
+         原因是 l.sum().backward()这里改成 l.sum().backward(retain_graph=True)
         生成数据时不能设置可导requires_grad=True
-        训练时w,b需要设置，这两点不遵循都会报错
+        训练时w,b需要设置，这两点不遵循都会报错上面的错误
         """
         X = torch.normal(0, 1, (num_examples, len(w)))  # 生成 X，他是一个均值为0，方差为1的随机数，他的大小: 行为num_examples，列为w的长度表示多少个feature
         y = torch.matmul(X, w) + b
@@ -71,16 +78,6 @@ class LinearReggressionRaw:
                 param.grad.zero_()  # 把梯度设置为0，因为pytorch不会自动的设置梯度为0，需要手动，下次计算梯度的时候就不会与这次相关了
 
     def fit(self, batch_size, features, labels, w, b):
-        """
-        异常:RuntimeError: Trying to backward through the graph a second time
-         (or directly access saved tensors after they have already been freed).
-         Saved intermediate values of the graph are freed when you call .
-         backward() or autograd.grad(). Specify retain_graph=True
-         if you need to backward through the graph a second time or
-         if you need to access saved tensors after calling backward.
-         原因是 l.sum().backward()这里改成 l.sum().backward(retain_graph=True)
-         如果不加，报错原因就是pytorch的计算图在第一次执行完backward计算梯度的时候就已经被释放了。第二次想要再用计算图计算时，计算图已经没了，自然报错。
-        """
         lr = 0.03
         epochs = 10
         net = self.line_reggression_model
