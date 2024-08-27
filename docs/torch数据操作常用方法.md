@@ -133,3 +133,18 @@ print(f"a:{a}")
 ```
 
 > x.numel()计算了张量x中元素的总数,numel是"number of elements"的缩写，这个方法返回张量中元素的总数
+
+### 3.12、N维数组样例
+
+<img src="./images\image-20240827212437968.png" alt="image-20240827212437968" style="zoom:67%;" /> 	
+
+<img src="./images\image-20240827212501429.png" alt="image-20240827212501429" style="zoom:67%;" />
+
+### 3.13、创建数组
+
+<img src="./images\image-20240827212630686.png" alt="image-20240827212630686" style="zoom:67%;" />
+
+
+### 3.14、元素访问
+
+<img src="./images\image-20240827212703516.png" alt="image-20240827212703516" style="zoom:67%;" />
