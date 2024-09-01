@@ -112,7 +112,9 @@ a = torch.tensor([1,2,3], dtype=torch.float32) # torch.int32,torch.float32,torch
 print(f"a.dtype:{a.dtype}") # out:torch.float32
 ```
 
-### 3.10、求导
+### 3.10、x.grad重要
+
+x.grad自动求导。
 
 ```python
 x = torch.tensor([[1,2,3],[4,5,6]], dtype=torch.float, requires_grad=True) # 先设置变量可导
@@ -124,7 +126,7 @@ r = x.grad # ds/dx = 2x 求导
 
 求导操作首先要设置变量为可导，然后再进行反向传播和求导计算。
 
-### 3.11、numel重要
+### 3.11、x.numel重要
 
 numel函数，统计张量元素个数
 
@@ -137,18 +139,53 @@ print(f"a:{a}")
 
 > x.numel()计算了张量x中元素的总数,numel是"number of elements"的缩写，这个方法返回张量中元素的总数
 
+### 3.12、torch.cat重要
+
+torch.cat函数作用是把X，Y按行或列方向上进行拼接。
+
+```python
+        """
+        torch.arange(12, dtype=torch.float32)生成[0-11]共12个整数成一个列表
+        torch.cat((X, Y), dim=0) 在列方向上进行拼接
+        torch.cat((X, Y), dim=1) 在行方向上进行拼接
+        :return:
+        """
+        X = torch.arange(12, dtype=torch.float32).reshape((3, 4))
+        print(f"X:{X}")
+        print("--------------------------------------")
+        Y = torch.tensor([[2.0, 1, 4, 3], [1, 2, 3, 4], [4, 3, 2, 1]])
+        print(f"Y:{Y}")
+        print("--------------------------------------")
+        Z = torch.cat((X, Y), dim=0), torch.cat((X, Y), dim=1)
+        print(f"Z:{Z}")
+```
+
 ### 3.12、N维数组样例
 
-<img src="./images\image-20240827212437968.png" alt="image-20240827212437968" style="zoom:67%;" /> 	
+<img src="./images\image-20240827212437968.png" alt="image-20240827212437968" style="zoom:67%;" align="left"/> 
 
-<img src="./images\image-20240827212501429.png" alt="image-20240827212501429" style="zoom:67%;" />
+
+
+
+
+
+
+
+
+
+
+​	
+
+
+
+<img src="./images\image-20240827212501429.png" alt="image-20240827212501429" style="zoom:67%;" align="left"/>
 
 ### 3.13、创建数组
 
-<img src="./images\image-20240827212630686.png" alt="image-20240827212630686" style="zoom:67%;" />
+<img src="./images\image-20240827212630686.png" alt="image-20240827212630686" style="zoom:67%;" align="left"/>
 
 
 ### 3.14、元素访问
 
-<img src="./images\image-20240827212703516.png" alt="image-20240827212703516" style="zoom:67%;" />
+<img src="./images\image-20240827212703516.png" alt="image-20240827212703516" style="zoom:67%;" align="left"/>
 
