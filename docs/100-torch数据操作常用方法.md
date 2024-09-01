@@ -124,11 +124,14 @@ r = x.grad # ds/dx = 2x 求导
 
 求导操作首先要设置变量为可导，然后再进行反向传播和求导计算。
 
-### 3.11、统计张量元素个数
+### 3.11、numel重要
+
+numel函数，统计张量元素个数
 
 ```python
 x = torch.rand(100, 200)
-a = x.numel()
+# x.numel()计算了张量x中元素的总数,numel是"number of elements"的缩写，这个方法返回张量中元素的总数
+a = x.numel() 
 print(f"a:{a}")
 ```
 
@@ -148,3 +151,4 @@ print(f"a:{a}")
 ### 3.14、元素访问
 
 <img src="./images\image-20240827212703516.png" alt="image-20240827212703516" style="zoom:67%;" />
+
