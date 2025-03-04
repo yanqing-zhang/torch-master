@@ -1,11 +1,12 @@
-import numpy as np
 import torch
-from torch import nn
-from torch.utils import data
-from d2l import torch as d2l
 import random
-
+"""
+从零开始实现线性回归
+"""
 def synthetic_data(w, b, num_examples):  # num_examples:n个样本
+    """
+    合成数据集
+    """
     '''生成 y=Xw+b+噪声'''
     X = torch.normal(0, 1, (num_examples, len(w)))  # 生成 X，他是一个均值为0，方差为1的随机数，他的大小: 行为num_examples，列为w的长度表示多少个feature
     y = torch.matmul(X, w) + b
