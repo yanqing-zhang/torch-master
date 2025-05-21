@@ -9,7 +9,7 @@ import torch
 import torch.nn as nn
 from d2l.torch_util import load_data_fashion_mnist, train_ch6, try_gpu
 def build_alex_net_structure():
-    net  = nn.Squential(
+    net = nn.Squential(
         nn.Conv2d(1, 96, kernel_size=11, stride=4, padding=1),
         nn.ReLU(),
         nn.MaxPool2d(kernel_size=3, stride=2),
